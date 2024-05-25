@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from config import get_config
-from model import MixerLayer
+from model import MLPMixer
 
 
 # Get accuracy on training & test to see how good our model is
@@ -65,7 +65,7 @@ criterion = nn.CrossEntropyLoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=config["learning_rate"])
 
 
-for epoch in range(num_epochs):
+for epoch in range(config["num_epochs"]):
     model.train()
     loop = tqdm(enumerate(train_loader), total=len(train_loader), leave=False)
     for batch_index, (images, targets) in loop:
